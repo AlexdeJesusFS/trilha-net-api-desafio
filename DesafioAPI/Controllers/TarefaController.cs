@@ -11,7 +11,7 @@ namespace TrilhaApiDesafio.Controllers
     {
         private readonly OrganizadorContext _context = context;
 
-        [HttpGet("{id}")]
+        [HttpGet("{id: int}")]
         public IActionResult ObterPorId(int id)
         {
             // TODO: Buscar o Id no banco utilizando o EF
@@ -81,7 +81,7 @@ namespace TrilhaApiDesafio.Controllers
             return CreatedAtAction(nameof(ObterPorId), new { id = tarefa.Id }, tarefa);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public IActionResult Atualizar(int id, Tarefa tarefa)
         {
             var tarefaBanco = _context.Tarefas.Find(id);
@@ -103,7 +103,7 @@ namespace TrilhaApiDesafio.Controllers
             return Ok(tarefaBanco);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id: int}")]
         public IActionResult Deletar(int id)
         {
             var tarefaBanco = _context.Tarefas.Find(id);
